@@ -27,4 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
     registerTab.setAttribute('aria-selected', 'false');
     registerPanel.hidden = true;
   });
+
+  if (window.location.hash === '#entrar') {
+    loginTab.click();
+  }
 });
