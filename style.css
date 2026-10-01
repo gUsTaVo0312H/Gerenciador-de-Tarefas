@@ -1,0 +1,329 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	color: #202923;
+	background: #f6f8f5;
+	font-family: Arial, sans-serif;
+	line-height: 1.6;
+}
+
+a {
+	color: #355a43;
+}
+
+a:hover {
+	color: #4b7257;
+}
+
+a:focus,
+button:focus,
+input:focus {
+	outline: 2px solid #78977e;
+}
+
+button,
+input {
+	font-family: Arial, sans-serif;
+}
+
+/* Página principal */
+header {
+	border-bottom: 1px solid #dfe5df;
+	background: #ffffff;
+}
+
+nav,
+main,
+aside,
+footer {
+	width: 90%;
+	margin: 0 auto;
+}
+
+nav ul {
+	display: flex;
+	align-items: center;
+	gap: 24px;
+	min-height: 70px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+nav a {
+	font-weight: bold;
+	text-decoration: none;
+}
+
+main {
+	padding: 80px 0 48px;
+}
+
+main h1 {
+	margin: 0;
+	font-size: 48px;
+	line-height: 1.1;
+}
+
+main p {
+	color: #68736b;
+	font-size: 18px;
+}
+
+aside {
+	margin-bottom: 60px;
+	padding: 24px 0;
+	border-top: 1px solid #dfe5df;
+}
+
+aside h2 {
+	margin-bottom: 4px;
+	font-size: 20px;
+}
+
+aside p,
+footer {
+	color: #68736b;
+	font-size: 14px;
+}
+
+footer {
+	padding: 20px 0;
+	border-top: 1px solid #dfe5df;
+}
+
+footer p {
+	margin: 0;
+}
+
+/* Cadastro e login */
+.auth-page {
+	background: #f6f8f5;
+}
+
+.auth-header,
+.auth-shell {
+	width: 90%;
+	margin: 0 auto;
+}
+
+.auth-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	min-height: 76px;
+	border-bottom: 1px solid #dfe5df;
+}
+
+.logo {
+	color: #202923;
+	font-weight: bold;
+	text-decoration: none;
+    padding: 0 20px;
+}
+
+.auth-back {
+	color: #68736b;
+	font-size: 14px;
+    padding: 0 20px;
+}
+
+.auth-shell {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 50px;
+	padding: 70px 0;
+}
+
+.auth-heading {
+	width: 52%;
+	padding-top: 30px;
+}
+
+.auth-heading .label {
+	color: #4b7257;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.auth-heading h1 {
+	margin: 18px 0;
+	font-size: 48px;
+	line-height: 1.1;
+}
+
+.auth-heading h1 span {
+	color: #4b7257;
+}
+
+.auth-heading > p:last-child {
+	color: #68736b;
+	font-size: 17px;
+}
+
+.auth-panel {
+	width: 45%;
+	padding: 32px;
+	border: 1px solid #dfe5df;
+	border-radius: 8px;
+	background: #ffffff;
+	box-shadow: 0 14px 40px rgba(32, 41, 35, 0.07);
+}
+
+.auth-tabs {
+	display: flex;
+	margin-bottom: 28px;
+	padding: 5px;
+	border: 1px solid #dfe5df;
+	border-radius: 6px;
+	background: #f6f8f5;
+}
+
+.auth-tab {
+	width: 50%;
+	padding: 10px;
+	border: 0;
+	border-radius: 4px;
+	color: #68736b;
+	background: transparent;
+	cursor: pointer;
+}
+
+.auth-tab.active {
+	color: #ffffff;
+	background: #4b7257;
+	font-weight: bold;
+}
+
+.auth-panel h2 {
+	margin: 0 0 4px;
+	font-size: 23px;
+}
+
+.auth-hint,
+.auth-disclaimer {
+	color: #68736b;
+	font-size: 14px;
+}
+
+.auth-form {
+	display: flex;
+	flex-direction: column;
+	margin-top: 24px;
+}
+
+.auth-form label {
+	margin-top: 10px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.auth-form input {
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #dfe5df;
+	border-radius: 5px;
+	color: #202923;
+	background: #ffffff;
+}
+
+.auth-form input::placeholder {
+	color: #7b857e;
+}
+
+.auth-form small {
+	color: #68736b;
+	font-size: 12px;
+}
+
+.btn {
+	padding: 12px;
+	border: 0;
+	border-radius: 5px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.btn-primary {
+	color: #ffffff;
+	background: #355a43;
+}
+
+.btn-primary:hover {
+	background: #4b7257;
+}
+
+.auth-submit {
+	margin-top: 16px;
+	padding: 10px 14px;
+	font-size: 13px;
+}
+
+.auth-preview {
+	width: 96px;
+	height: 96px;
+	border: 1px solid #dfe5df;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.auth-message {
+	color: #4b7257;
+}
+
+.auth-disclaimer {
+	margin: 22px 0 0;
+	padding-top: 16px;
+	border-top: 1px solid #dfe5df;
+	font-size: 12px;
+}
+
+@media (max-width: 800px) {
+	.auth-shell {
+		flex-direction: column;
+		gap: 30px;
+		padding: 40px 0;
+	}
+
+	.auth-heading,
+	.auth-panel {
+		width: 100%;
+	}
+
+	.auth-heading {
+		padding-top: 0;
+	}
+
+	.auth-heading h1,
+	main h1 {
+		font-size: 38px;
+	}
+}
+
+@media (max-width: 500px) {
+	.auth-header {
+		align-items: flex-start;
+		flex-direction: column;
+		justify-content: center;
+		gap: 2px;
+		padding: 12px 0;
+	}
+
+	.auth-panel {
+		padding: 22px;
+	}
+
+	nav ul {
+		gap: 16px;
+		padding-left: 0;
+	}
+
+	main h1,
+	.auth-heading h1 {
+		font-size: 32px;
+	}
+}

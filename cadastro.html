@@ -1,0 +1,62 @@
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body class="auth-page">
+  <div class="scanlines" aria-hidden="true"></div>
+  <header class="auth-header">
+    <a href="index.html" class="logo logo-small">Gerenciador de tarefas</a>
+    <a class="auth-back" href="index.html">Voltar ao gerenciador</a>
+  </header>
+
+  <main class="auth-shell">
+    <section class="auth-heading">
+      <p class="label">Acesso | Cadastro</p>
+      <h1>Identidade protegida.<br><span>Acesso sob seu controle.</span></h1>
+      <p>Você está a um passo de organizar sua vida com segurança.</p>
+    </section>
+
+    <section class="auth-panel" aria-labelledby="authTitle">
+      <div class="auth-tabs" role="tablist" aria-label="Acesso à conta">
+        <button id="registerTab" class="auth-tab active" type="button" role="tab" aria-selected="true" aria-controls="registerPanel">Criar conta</button>
+        <button id="loginTab" class="auth-tab" type="button" role="tab" aria-selected="false" aria-controls="loginPanel">Entrar</button>
+      </div>
+
+      <div id="registerPanel" role="tabpanel" aria-labelledby="registerTab">
+        <h2 id="authTitle">Novo cadastro</h2>
+        <p class="auth-hint">Todos os campos são obrigatórios. A senha protege o arquivo e não é armazenada.</p>
+        <form id="registerForm" class="auth-form"> 
+            
+          <label for="registerName">Nome completo</label>
+          <input id="registerName" name="name" type="text" autocomplete="name" minlength="3" maxlength="100" required>
+         
+          <label for="registerEmail">E-mail</label>
+          <input id="registerEmail" name="email" type="email" autocomplete="email" maxlength="254" pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}" title="Informe um e-mail válido, como voce@exemplo.com." required placeholder="voce@exemplo.com">
+
+          <label for="registerPassword">Senha</label>
+          <input id="registerPassword" name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128" required aria-describedby="passwordHint" placeholder="Mínimo de 12 caracteres">
+          <small id="passwordHint">Use 12 ou mais caracteres, com maiúscula, minúscula, número e símbolo.</small>
+
+          <button class="btn btn-primary auth-submit" type="submit">CRIAR COFRE CRIPTOGRAFADO</button>
+        </form>
+      </div>
+
+      <div id="loginPanel" role="tabpanel" aria-labelledby="loginTab" hidden>
+        <h2>Entrar no cofre</h2>
+        <p class="auth-hint">Informe o mesmo e-mail e senha usados no cadastro.</p>
+        <form id="loginForm" class="auth-form">
+          <label for="loginEmail">E-mail</label>
+          <input id="loginEmail" name="email" type="email" autocomplete="email" maxlength="254" pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}" title="Informe um e-mail válido, como voce@exemplo.com." required placeholder="voce@exemplo.com">
+
+          <label for="loginPassword">Senha</label>
+          <input id="loginPassword" name="password" type="password" autocomplete="current-password" required>
+
+          <button class="btn btn-primary auth-submit" type="submit">DESBLOQUEAR COFRE</button>
+        </form>
+      </div>
+
+      <p id="authMessage" class="auth-message" role="status" aria-live="polite"></p>
+      <p class="auth-disclaimer">Criptografia com segurança de ponta a ponta</p>
+    </section>
+  </main>
+</body>
+</html>
