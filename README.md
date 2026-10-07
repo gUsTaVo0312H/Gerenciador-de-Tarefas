@@ -24,4 +24,4 @@ Abra o arquivo `index.html` em um navegador. Também é possível usar uma exten
 
 ## Estado atual
 
-Cadastro e entrada são demonstrativos: os formulários não validam contas em um servidor, e nenhuma senha é armazenada. A liberação de acesso usa `sessionStorage` e termina ao fechar a aba. As tarefas e anotações são armazenadas localmente no navegador; não há sincronização entre dispositivos.
+Cadastro e entrada são apenas para demonstração: os dados ficam como JSON no `localStorage` deste navegador. Após o cadastro, a aba de entrada abre com e-mail e senha preenchidos; o arquivo `cadastro.txt` também é baixado. A senha fica em texto puro; use somente dados fictícios. A liberação de acesso usa `sessionStorage` e termina ao fechar a aba. Não há servidor nem sincronização entre dispositivos.

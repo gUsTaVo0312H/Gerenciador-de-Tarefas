@@ -23,12 +23,12 @@
 
       <div id="registerPanel" role="tabpanel" aria-labelledby="registerTab">
         <h2 id="authTitle">Novo cadastro</h2>
-        <p class="auth-hint">Protótipo local: o formulário libera o acesso nesta aba, sem criar uma conta em servidor.</p>
+        <p class="auth-hint">O cadastro fica salvo neste navegador em JSON. Depois, o login abre preenchido.</p>
         <form id="registerForm" class="auth-form"> 
             
           <label for="registerName">Nome completo</label>
           <input id="registerName" name="name" type="text" autocomplete="name" minlength="3" maxlength="100" required>
-         
+        
           <label for="registerEmail">E-mail</label>
           <input id="registerEmail" name="email" type="email" autocomplete="email" maxlength="254" pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}" title="Informe um e-mail válido, como voce@exemplo.com." required placeholder="voce@exemplo.com">
 
@@ -40,15 +40,15 @@
           <input id="registerEndereço" name="Endereço" type="text" autocomplete="Endereço" minlength="3" maxlength="100" required>
 
           <label for="registerCPF">CPF</label>
-          <input id="registerCPF" name="CPF" type="number" autocomplete="CPF" minlength="3" maxlength="14" required>
+          <input id="registerCPF" name="cpf" type="text" inputmode="numeric" autocomplete="off" minlength="11" maxlength="11" pattern="[0-9]{11}" title="Informe um CPF com 11 dígitos." required>
 
-          <button class="btn btn-primary auth-submit" type="submit">CRIAR COFRE CRIPTOGRAFADO</button>
+          <button class="btn btn-primary auth-submit" type="submit">CRIAR CADASTRO</button>
         </form>
       </div>
 
       <div id="loginPanel" role="tabpanel" aria-labelledby="loginTab" hidden>
         <h2>Entrar no cofre</h2>
-        <p class="auth-hint">Acesso de demonstração: preencher os campos libera o espaço nesta aba.</p>
+        <p class="auth-hint">Seus dados do cadastro aparecem preenchidos. Confira e entre.</p>
         <form id="loginForm" class="auth-form">
           <label for="loginEmail">E-mail</label>
           <input id="loginEmail" name="email" type="email" autocomplete="email" maxlength="254" pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}" title="Informe um e-mail válido, como voce@exemplo.com." required placeholder="voce@exemplo.com">
@@ -56,12 +56,12 @@
           <label for="loginPassword">Senha</label>
           <div class="password-field"><input id="loginPassword" name="password" type="password" autocomplete="current-password" required><span class="password-character" aria-hidden="true"></span></div>
 
-          <button class="btn btn-primary auth-submit" type="submit">DESBLOQUEAR COFRE</button>
+          <button class="btn btn-primary auth-submit" type="submit">ENTRAR</button>
         </form>
       </div>
 
       <p id="authMessage" class="auth-message" role="status" aria-live="polite"></p>
-      <p class="auth-disclaimer">Não use dados pessoais reais. Este protótipo não valida contas nem salva senhas.</p>
+      <p class="auth-disclaimer">Somente para testes: a senha fica em texto puro no navegador e no TXT baixado. Use dados fictícios.</p>
     </section>
   </main>
       <footer>

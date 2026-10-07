@@ -76,8 +76,10 @@ document.addEventListener('click', function(event) {
 document.addEventListener('DOMContentLoaded', function () {
   var accessKey = 'meuEspacoAccess';
   var nameKey = 'meuEspacoName';
+  var accountsKey = 'usuarios';
   var registerForm = document.getElementById('registerForm');
   var loginForm = document.getElementById('loginForm');
+  var authMessage = document.getElementById('authMessage');
 
   document.querySelectorAll('input[type="password"]').forEach(function (field) {
     var character = field.nextElementSibling;
@@ -104,21 +106,110 @@ document.addEventListener('DOMContentLoaded', function () {
   function startDemoSession(name) {
     sessionStorage.setItem(accessKey, 'true');
     if (name) localStorage.setItem(nameKey, name);
-    window.location.replace('index.html');
+    window.setTimeout(function () { window.location.replace('index.html'); }, 500);
+  }
+
+  function showAuthMessage(message, isError) {
+    authMessage.textContent = message;
+    authMessage.style.color = isError ? '#a33d32' : '#4b7257';
+  }
+
+  function readAccounts() {
+    try {
+      var accounts = JSON.parse(localStorage.getItem(accountsKey) || '[]');
+      return Array.isArray(accounts) ? accounts : [];
+    } catch (error) {
+      return [];
+    }
+  }
+
+  function downloadFile(filename, contents, mimeType) {
+    var fileUrl = URL.createObjectURL(new Blob([contents], { type: mimeType }));
+    var link = document.createElement('a');
+    link.href = fileUrl;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.setTimeout(function () { URL.revokeObjectURL(fileUrl); }, 1000);
+  }
+
+  function downloadAccountText(account) {
+    var textContents = [
+      'Informações do cadastro',
+      'Nome: ' + account.name,
+      'E-mail: ' + account.email,
+      'Endereço: ' + account.address,
+      'CPF: ' + account.cpf,
+      'Senha: ' + account.password,
+      'Criado em: ' + account.createdAt
+    ].join('\n');
+    downloadFile('cadastro.txt', textContents, 'text/plain;charset=utf-8');
   }
 
   if (registerForm) {
     registerForm.addEventListener('submit', function (event) {
       event.preventDefault();
-      var nameField = document.getElementById('registerName');
-      startDemoSession(nameField.value.trim());
+      var account = {
+        name: document.getElementById('registerName').value.trim(),
+        email: document.getElementById('registerEmail').value.trim().toLowerCase(),
+        password: document.getElementById('registerPassword').value,
+        address: document.getElementById('registerEndereço').value.trim(),
+        cpf: document.getElementById('registerCPF').value.replace(/\D/g, ''),
+        createdAt: new Date().toISOString()
+      };
+      var accounts = readAccounts();
+
+      if (account.cpf.length !== 11) {
+        showAuthMessage('Informe um CPF com 11 dígitos.', true);
+        return;
+      }
+      if (accounts.some(function (savedAccount) { return savedAccount.email === account.email; })) {
+        showAuthMessage('Este e-mail já foi cadastrado neste navegador.', true);
+        return;
+      }
+
+      accounts.push(account);
+      try {
+        localStorage.setItem(accountsKey, JSON.stringify(accounts));
+        localStorage.setItem('meuEspacoUltimoCadastro', account.email);
+        downloadAccountText(account);
+        loginTab.click();
+        document.getElementById('loginEmail').value = account.email;
+        document.getElementById('loginPassword').value = account.password;
+        showAuthMessage('Cadastro salvo. Confira os dados e entre.', false);
+        window.location.replace('cadastro.html#entrar');
+      } catch (error) {
+        showAuthMessage('Não foi possível salvar os dados neste navegador.', true);
+      }
     });
   }
 
   if (loginForm) {
+    var lastEmail = localStorage.getItem('meuEspacoUltimoCadastro');
+    var lastAccount = readAccounts().find(function (savedAccount) {
+      return savedAccount.email === lastEmail;
+    });
+    if (window.location.hash === '#entrar' && lastAccount) {
+      document.getElementById('loginEmail').value = lastAccount.email;
+      document.getElementById('loginPassword').value = lastAccount.password;
+      showAuthMessage('Cadastro encontrado. Confira os dados e entre.', false);
+    }
+
     loginForm.addEventListener('submit', function (event) {
       event.preventDefault();
-      startDemoSession(localStorage.getItem(nameKey));
+      var email = document.getElementById('loginEmail').value.trim().toLowerCase();
+      var password = document.getElementById('loginPassword').value;
+      var account = readAccounts().find(function (savedAccount) {
+        return savedAccount.email === email && savedAccount.password === password;
+      });
+
+      if (!account) {
+        showAuthMessage('E-mail ou senha inválidos.', true);
+        return;
+      }
+      showAuthMessage('Entrada realizada. Redirecionando...', false);
+      startDemoSession(account.name);
     });
   }
 
