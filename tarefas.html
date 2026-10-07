@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#f5f5ef">
+	<title>Meu Espaço | Organize seu dia</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body class="workspace-page">
+	<div class="workspace-shell">
+		<aside class="workspace-sidebar" aria-label="Navegação principal">
+			<a class="workspace-brand" href="tarefas.html" aria-label="Meu Espaço, início">
+				<span class="brand-mark">m.</span>
+				<span>meu espaço<small>um lugar para você</small></span>
+			</a>
+
+			<div class="sidebar-caption">SEU ESPAÇO</div>
+			<nav class="workspace-nav" aria-label="Seções">
+				<button class="nav-item active" type="button" data-view="home"><span>⌂</span> Início</button>
+				<button class="nav-item" type="button" data-view="tasks"><span>☑</span> Tarefas <span class="nav-count" id="sidebar-task-count">0</span></button>
+				<button class="nav-item" type="button" data-view="notes"><span>▤</span> Anotações</button>
+				<button class="nav-item" type="button" data-view="calendar"><span>▦</span> Agenda</button>
+				<button class="nav-item" type="button" data-view="progress"><span>↗</span> Progresso</button>
+				<button class="nav-item" type="button" data-view="goals"><span>◎</span> Objetivos</button>
+			</nav>
+
+			<div class="sidebar-bottom">
+				<a class="profile-chip" href="cadastro.html"><span class="avatar">G</span><span>Gustavo<small>Meu perfil</small></span><span class="profile-dots">···</span></a>
+			</div>
+		</aside>
+
+		<main class="workspace-main">
+			<header class="workspace-topbar">
+				<div class="breadcrumb"><span>Meu espaço</span><span>/</span><strong id="current-section">Início</strong></div>
+				<div class="topbar-actions">
+					<button class="icon-button" type="button" aria-label="Buscar" title="Buscar" id="search-button">⌕</button>
+					<span class="today-date" id="today-date"></span>
+					<button class="avatar top-avatar" type="button" aria-label="Perfil de Gustavo">G</button>
+				</div>
+			</header>
+
+			<div class="workspace-content">
+				<section class="view-panel" data-panel="home">
+					<div class="welcome-row">
+						<div><p class="eyebrow">SEU CANTINHO, SEU RITMO</p><h1>Olá, Gustavo</h1><p class="welcome-copy">Vamos deixar a cabeça mais leve e o dia mais claro?</p></div>
+						<button class="button-primary add-trigger" type="button"><span>＋</span> Adicionar</button>
+					</div>
+
+					<div class="summary-grid" aria-label="Resumo">
+						<article class="summary-card"><span>Tarefas pendentes</span><strong id="today-task-total">0</strong><small id="today-done-copy">Tudo começa com um passo</small></article>
+						<article class="summary-card"><span>Anotações</span><strong id="note-total">0</strong><small>guardadas no seu espaço</small></article>
+						<article class="summary-card"><span>Progresso da semana</span><strong id="week-progress">0%</strong><div class="mini-progress"><span id="week-progress-bar"></span></div></article>
+					</div>
+
+					<div class="home-grid">
+						<section class="content-block today-block">
+							<div class="block-heading"><div><p class="eyebrow">QUARTA-FEIRA, 7 DE OUTUBRO</p><h2>O que vem primeiro?</h2></div><button class="text-action" type="button" data-go="tasks">Ver todas <span>→</span></button></div>
+							<div class="task-list" id="home-task-list"></div>
+							<button class="inline-add add-trigger" type="button"><span>＋</span> Adicionar uma tarefa</button>
+						</section>
+
+						<section class="content-block notes-preview-block">
+							<div class="block-heading"><div><p class="eyebrow">GUARDADAS COM CARINHO</p><h2>Anotações recentes</h2></div><button class="text-action" type="button" data-go="notes">Ver todas <span>→</span></button></div>
+							<div class="note-grid" id="home-note-list"></div>
+							<button class="inline-add add-trigger" type="button"><span>＋</span> Nova anotação</button>
+						</section>
+					</div>
+				</section>
+
+				<section class="view-panel" data-panel="tasks" hidden>
+					<div class="page-heading"><div><p class="eyebrow">UM PASSO DE CADA VEZ</p><h1>Suas tarefas</h1><p>Organize o que precisa ser feito, sem pressa.</p></div><button class="button-primary add-trigger" type="button" data-add-type="task"><span>＋</span> Nova tarefa</button></div>
+					<div class="task-view-toolbar"><div class="filter-tabs"><button class="filter-tab active" type="button" data-filter="all">Todas</button><button class="filter-tab" type="button" data-filter="open">Pendentes</button><button class="filter-tab" type="button" data-filter="done">Concluídas</button></div><span id="task-view-count"></span></div>
+					<div class="content-block full-list"><div class="task-list" id="all-task-list"></div></div>
+				</section>
+
+				<section class="view-panel" data-panel="notes" hidden>
+					<div class="page-heading"><div><p class="eyebrow">TIRE DA CABEÇA, GUARDE AQUI</p><h1>Seu mural de ideias</h1><p>Rascunhos, listas e pensamentos do seu jeito.</p></div><button class="button-primary add-trigger" type="button" data-add-type="note"><span>＋</span> Nova anotação</button></div>
+					<div class="note-grid notes-page-grid" id="all-note-list"></div>
+				</section>
+
+				<section class="view-panel" data-panel="calendar" hidden>
+					<div class="page-heading"><div><p class="eyebrow">UM OLHAR PARA FRENTE</p><h1>Sua agenda</h1><p>Um calendário simples para os seus próximos passos.</p></div><button class="button-primary add-trigger" type="button" data-add-type="event"><span>＋</span> Novo evento</button></div>
+					<section class="content-block calendar-block"><div class="calendar-heading"><button class="icon-button" type="button" aria-label="Mês anterior" id="month-prev">‹</button><h2 id="calendar-month"></h2><button class="icon-button" type="button" aria-label="Próximo mês" id="month-next">›</button></div><div class="calendar-grid" id="calendar-grid"></div><div class="calendar-events" id="calendar-events"></div></section>
+				</section>
+
+				<section class="view-panel" data-panel="progress" hidden>
+					<div class="page-heading"><div><p class="eyebrow">CADA PEQUENA COISA CONTA</p><h1>Olha só o que você fez</h1><p>Seu progresso não precisa ser perfeito para ser incrível.</p></div></div>
+					<div class="progress-layout"><section class="content-block progress-card"><p class="eyebrow">HOJE</p><h2 id="today-progress-label">Seu dia está começando</h2><div class="large-progress"><span id="today-progress-bar"></span></div><div class="progress-caption"><strong id="today-progress-value">0%</strong><span id="today-progress-tasks">0 tarefas concluídas</span></div><div class="encouragement"><span id="progress-message">Todo grande caminho começa com um pequeno passo.</span></div></section><section class="content-block history-card"><p class="eyebrow">ATIVIDADES CONCLUÍDAS</p><h2>Seu histórico</h2><div id="activity-history"></div></section></div>
+					<section class="content-block week-block progress-week-block"><div class="block-heading"><div><p class="eyebrow">SEU RITMO</p><h2>Esta semana</h2></div><span class="week-tag">7 dias</span></div><div class="week-chart" id="week-chart" aria-label="Atividades concluídas por dia"></div><div class="chart-legend"><span><i></i> tarefas concluídas</span><strong id="week-total">0 atividades</strong></div></section>
+				</section>
+
+				<section class="view-panel" data-panel="goals" hidden>
+					<div class="page-heading"><div><p class="eyebrow">SONHOS TAMBÉM SE ORGANIZAM</p><h1>Objetivos que importam</h1><p>Pequenos avanços, planos que ganham forma.</p></div><button class="button-primary add-trigger" type="button" data-add-type="goal"><span>＋</span> Novo objetivo</button></div>
+					<div class="goal-grid" id="goal-list"></div>
+				</section>
+			</div>
+			<footer class="workspace-footer"><span>Feito para a vida real, no seu ritmo.</span><span>✳</span></footer>
+		</main>
+	</div>
+
+	<nav class="mobile-nav" aria-label="Navegação móvel">
+		<button class="mobile-nav-item active" type="button" data-view="home"><span>⌂</span>Início</button>
+		<button class="mobile-nav-item" type="button" data-view="tasks"><span>☑</span>Tarefas</button>
+		<button class="mobile-add add-trigger" type="button" aria-label="Adicionar"><span>＋</span></button>
+		<button class="mobile-nav-item" type="button" data-view="notes"><span>▤</span>Notas</button>
+		<button class="mobile-nav-item" type="button" data-view="calendar"><span>▦</span>Agenda</button>
+	</nav>
+
+	<dialog class="entry-dialog" id="entry-dialog">
+		<form id="entry-form" method="dialog">
+			<div class="dialog-heading"><div><p class="eyebrow">UM ESPAÇO PARA ISSO</p><h2 id="dialog-title">O que vamos guardar?</h2></div><button class="dialog-close" type="button" aria-label="Fechar" id="dialog-close">×</button></div>
+			<label for="entry-type">Tipo</label><select id="entry-type" name="type"><option value="task">☑ Tarefa</option><option value="note">✎ Anotação</option><option value="goal">◎ Objetivo</option><option value="event">▦ Evento</option></select>
+			<label for="entry-title">Título</label><input id="entry-title" name="title" maxlength="100" placeholder="Dê um nome para isso" required>
+			<label for="entry-detail" id="detail-label">Detalhes <span>(opcional)</span></label><textarea id="entry-detail" name="detail" rows="3" maxlength="280" placeholder="Escreva um pouco mais..."></textarea>
+			<label for="entry-date" id="date-label">Data</label><input id="entry-date" name="date" type="date">
+			<button class="button-primary dialog-submit" type="submit">Guardar no meu espaço <span>→</span></button>
+		</form>
+	</dialog>
+	<script src="tarefas.js"></script>
+</body>
+</html>

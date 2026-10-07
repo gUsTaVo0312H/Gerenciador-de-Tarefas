@@ -23,7 +23,7 @@
 
       <div id="registerPanel" role="tabpanel" aria-labelledby="registerTab">
         <h2 id="authTitle">Novo cadastro</h2>
-        <p class="auth-hint">Todos os campos são obrigatórios. A senha protege o arquivo e não é armazenada.</p>
+        <p class="auth-hint">Protótipo local: o formulário libera o acesso nesta aba, sem criar uma conta em servidor.</p>
         <form id="registerForm" class="auth-form"> 
             
           <label for="registerName">Nome completo</label>
@@ -33,8 +33,14 @@
           <input id="registerEmail" name="email" type="email" autocomplete="email" maxlength="254" pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}" title="Informe um e-mail válido, como voce@exemplo.com." required placeholder="voce@exemplo.com">
 
           <label for="registerPassword">Senha</label>
-          <input id="registerPassword" name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128" required aria-describedby="passwordHint" placeholder="Mínimo de 12 caracteres">
+          <div class="password-field"><input id="registerPassword" name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128" required aria-describedby="passwordHint" placeholder="Mínimo de 12 caracteres"><span class="password-character" aria-hidden="true"></span></div>
           <small id="passwordHint">Use 12 ou mais caracteres, com maiúscula, minúscula, número e símbolo.</small>
+
+          <label for="registerEndereço">Endereço</label>
+          <input id="registerEndereço" name="Endereço" type="text" autocomplete="Endereço" minlength="3" maxlength="100" required>
+
+          <label for="registerCPF">CPF</label>
+          <input id="registerCPF" name="CPF" type="number" autocomplete="CPF" minlength="3" maxlength="14" required>
 
           <button class="btn btn-primary auth-submit" type="submit">CRIAR COFRE CRIPTOGRAFADO</button>
         </form>
@@ -42,21 +48,24 @@
 
       <div id="loginPanel" role="tabpanel" aria-labelledby="loginTab" hidden>
         <h2>Entrar no cofre</h2>
-        <p class="auth-hint">Informe o mesmo e-mail e senha usados no cadastro.</p>
+        <p class="auth-hint">Acesso de demonstração: preencher os campos libera o espaço nesta aba.</p>
         <form id="loginForm" class="auth-form">
           <label for="loginEmail">E-mail</label>
           <input id="loginEmail" name="email" type="email" autocomplete="email" maxlength="254" pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}" title="Informe um e-mail válido, como voce@exemplo.com." required placeholder="voce@exemplo.com">
 
           <label for="loginPassword">Senha</label>
-          <input id="loginPassword" name="password" type="password" autocomplete="current-password" required>
+          <div class="password-field"><input id="loginPassword" name="password" type="password" autocomplete="current-password" required><span class="password-character" aria-hidden="true"></span></div>
 
           <button class="btn btn-primary auth-submit" type="submit">DESBLOQUEAR COFRE</button>
         </form>
       </div>
 
       <p id="authMessage" class="auth-message" role="status" aria-live="polite"></p>
-      <p class="auth-disclaimer">Criptografia com segurança de ponta a ponta</p>
+      <p class="auth-disclaimer">Não use dados pessoais reais. Este protótipo não valida contas nem salva senhas.</p>
     </section>
   </main>
+      <footer>
+      <p>&copy; 2026 Todos os direitos reservados. Marcos e Gustavo</p>  
+    </footer>
 </body>
 </html>
