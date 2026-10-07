@@ -3,49 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciador de Tarefas</title>
+    <meta name="theme-color" content="#f7f7f2">
+    <title>Meu Espaço | Organize seu dia</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
-<body>
-<header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Início</a></li>
-            <li id="login-nav"><a href="login.html">Entrar</a></li>
-            <li id="register-nav"><a href="cadastro.html">Cadastro</a></li>
-            <li id="tasks-nav" hidden><a href="tarefas.html">Minhas tarefas</a></li>
-            <li id="logout-nav" hidden><button id="logout-button" type="button">Sair</button></li>
-        </ul>
-    </nav>
+<body class="landing-page">
+    <header class="landing-header">
+        <div class="landing-header-inner">
+            <a class="landing-brand" href="index.html" aria-label="Meu Espaço, início">
+                <span class="landing-brand-mark" aria-hidden="true">m.</span>
+                <span>Meu Espaço</span>
+            </a>
+            <nav aria-label="Navegação principal">
+                <ul>
+                    <li><a href="index.html" aria-current="page">Início</a></li>
+                    <li id="login-nav"><a href="login.html">Entrar</a></li>
+                    <li id="register-nav"><a href="cadastro.html">Cadastro</a></li>
+                    <li id="tasks-nav" hidden><a href="tarefas.html">Minhas tarefas</a></li>
+                    <li id="logout-nav" hidden><button id="logout-button" type="button">Sair</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <ul id="n-sei">
-        <a href="#" id="sobre">sobre</a>
-        <a href="#" id="contato">contato</a>
-    </ul>
+    <main class="landing-main">
+        <section class="landing-hero" aria-labelledby="landing-title">
+            <div class="landing-copy">
+                <p class="landing-eyebrow">UM LUGAR PARA VOCÊ</p>
+                <h1 id="landing-title">Meu Espaço<span>.</span></h1>
+                <p class="landing-intro">Tarefas, ideias e planos em um só lugar, para organizar a vida no seu ritmo.</p>
+                <div class="landing-actions" id="guest-message">
+                    <a class="landing-button" href="cadastro.html">Criar meu espaço <span aria-hidden="true">→</span></a>
+                    <a class="landing-login-link" href="login.html">Já tenho cadastro</a>
+                </div>
+                <p class="landing-member-message" id="member-message" hidden></p>
+            </div>
 
-    <ul id="sidebar-sobre" class="sidebar">
-        <li>Empresa</li>
-        <li>Clientes</li>
-    </ul>
+            <section class="landing-preview" aria-label="Prévia das áreas do Meu Espaço">
+                <div class="preview-heading">
+                    <span class="preview-mark" aria-hidden="true">m.</span>
+                    <span>Um espaço, muitas ideias</span>
+                </div>
+                <div class="preview-content">
+                    <p class="landing-eyebrow">DO SEU JEITO</p>
+                    <h2>O que importa para você, reunido aqui.</h2>
+                    <ul class="preview-areas">
+                        <li><span class="preview-number">01</span><span>Tarefas</span><span class="preview-line" aria-hidden="true"></span></li>
+                        <li><span class="preview-number">02</span><span>Anotações</span><span class="preview-line" aria-hidden="true"></span></li>
+                        <li><span class="preview-number">03</span><span>Agenda</span><span class="preview-line" aria-hidden="true"></span></li>
+                        <li><span class="preview-number">04</span><span>Progresso e objetivos</span><span class="preview-line" aria-hidden="true"></span></li>
+                    </ul>
+                    <p class="preview-note">Pequenos passos também contam.</p>
+                </div>
+            </section>
+        </section>
 
-    <ul id="sidebar-contato" class="sidebar">
-        <li>Email</li>
-        <li>Contato</li>
-    </ul>
-
-</header>
-    <main>
-        <h1>Gerenciador de Tarefas</h1>
-        <p id="guest-message">Bem-vindo! Entre ou crie sua conta para organizar suas tarefas.</p>
-        <p id="member-message" hidden></p>
+        <section class="landing-areas" aria-labelledby="areas-title">
+            <div class="areas-heading">
+                <p class="landing-eyebrow">SEU DIA, COM MAIS CLAREZA</p>
+                <h2 id="areas-title">Um cantinho para cada coisa.</h2>
+            </div>
+            <div class="area-list">
+                <article class="area-item">
+                    <span class="area-index">01</span>
+                    <div><h3>Tarefas</h3><p>Veja o que precisa ser feito, um passo de cada vez.</p></div>
+                </article>
+                <article class="area-item">
+                    <span class="area-index">02</span>
+                    <div><h3>Anotações</h3><p>Guarde ideias, listas e lembretes em um só lugar.</p></div>
+                </article>
+                <article class="area-item">
+                    <span class="area-index">03</span>
+                    <div><h3>Agenda</h3><p>Tenha um olhar simples para seus próximos compromissos.</p></div>
+                </article>
+                <article class="area-item">
+                    <span class="area-index">04</span>
+                    <div><h3>Progresso e objetivos</h3><p>Acompanhe o que já caminhou e o que quer alcançar.</p></div>
+                </article>
+            </div>
+        </section>
     </main>
-    <aside>
-        <h2>Barra lateral</h2>
-        <p>Este é o conteúdo da barra lateral.</p>
-    </aside>
-    <footer>
-    <p>&copy; 2026 Todos os direitos reservados. Marcos e Gustavo</p>  
+
+    <footer class="landing-footer">
+        <a class="landing-footer-brand" href="index.html">Meu Espaço</a>
+        <span>Feito para a vida real, no seu ritmo.</span>
     </footer>
 </body>
 </html>
