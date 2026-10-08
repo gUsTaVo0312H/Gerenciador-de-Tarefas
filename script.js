@@ -37,16 +37,50 @@ const btnsobre = document.getElementById('sobre');
 const menuVerticalLicencas = document.getElementById('sidebar-sobre');
 const btnContato = document.getElementById('contato');
 const menuVerticalContato = document.getElementById('sidebar-contato');
+var themeStorageKey = 'meu-espaco-theme';
+var themeToggles = document.querySelectorAll('.theme-toggle');
+
+function setDarkMode(enabled) {
+    document.body.classList.toggle('dark-mode', enabled);
+    themeToggles.forEach(function(toggle) {
+        toggle.setAttribute('aria-checked', String(enabled));
+        var label = enabled ? 'Ativar modo claro' : 'Ativar modo escuro';
+        toggle.setAttribute('aria-label', label);
+        toggle.setAttribute('title', label);
+    });
+}
+
+var savedTheme = 'light';
+try {
+    savedTheme = localStorage.getItem(themeStorageKey) || 'light';
+} catch (error) {
+    console.warn('Não foi possível carregar a preferência de tema.', error);
+}
+setDarkMode(savedTheme === 'dark');
+
+themeToggles.forEach(function(toggle) {
+    toggle.addEventListener('click', function() {
+        var enabled = !document.body.classList.contains('dark-mode');
+        setDarkMode(enabled);
+        try {
+            localStorage.setItem(themeStorageKey, enabled ? 'dark' : 'light');
+        } catch (error) {
+            console.warn('Não foi possível salvar a preferência de tema.', error);
+        }
+    });
+});
 
 if (btnsobre && menuVerticalLicencas) {
     btnsobre.addEventListener('click', function(event) {
         abreMenu(event, menuVerticalLicencas);
+        btnsobre.setAttribute('aria-expanded', String(menuVerticalLicencas.classList.contains('active')));
     });
 }
 
 if (btnContato && menuVerticalContato) {
     btnContato.addEventListener('click', function(event) {
         abreMenu(event, menuVerticalContato);
+        btnContato.setAttribute('aria-expanded', String(menuVerticalContato.classList.contains('active')));
     });
 }
 
@@ -56,8 +90,9 @@ function abreMenu(event, menu) {
 }
 
 function fechaMenu(event, menu, btn) {
-    if (!menu.contains(event.target) && event.target !== btn) {
+    if (!menu.contains(event.target) && !btn.contains(event.target)) {
         menu.classList.remove('active');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
     }
 }
 
@@ -71,6 +106,40 @@ document.addEventListener('click', function(event) {
         fechaMenu(event, menuVerticalContato, btnContato);
     }
 
+});
+
+document.addEventListener('keydown', function(event) {
+    if (event.key !== 'Escape') return;
+
+    [[menuVerticalLicencas, btnsobre], [menuVerticalContato, btnContato]].forEach(function(pair) {
+        var menu = pair[0];
+        var button = pair[1];
+        if (menu && button && menu.classList.contains('active')) {
+            menu.classList.remove('active');
+            button.setAttribute('aria-expanded', 'false');
+            button.focus();
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  var aboutTabs = document.querySelectorAll('.about-menu-tab');
+  var aboutPanels = document.querySelectorAll('.about-menu-panel');
+
+  aboutTabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      aboutTabs.forEach(function (item) {
+        var selected = item === tab;
+        item.classList.toggle('active', selected);
+        item.setAttribute('aria-selected', String(selected));
+      });
+      aboutPanels.forEach(function (panel) {
+        var selected = panel.id === tab.getAttribute('aria-controls');
+        panel.classList.toggle('active', selected);
+        panel.hidden = !selected;
+      });
+    });
+  });
 });
 
 document.addEventListener('DOMContentLoaded', function () {

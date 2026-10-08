@@ -89,6 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function taskRow(task) {
     var row = element('div', 'task-row' + (task.done ? ' completed' : ''));
+    row.dataset.entryId = task.id;
     var check = element('button', 'task-check', task.done ? '✓' : '✓');
     check.type = 'button';
     check.setAttribute('aria-label', (task.done ? 'Reabrir: ' : 'Concluir: ') + task.title);
@@ -128,6 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function noteCard(note) {
     var card = element('article', 'note-card');
+    card.dataset.entryId = note.id;
     var head = element('div', 'note-card-head');
     var category = element('span', 'note-category', note.category || '✎  ANOTAÇÃO');
     var remove = element('button', 'note-delete', '×');
@@ -351,6 +353,86 @@ document.addEventListener('DOMContentLoaded', function () {
     dialog.showModal();
     titleInput.focus();
   }
+
+  var searchDialog = document.getElementById('search-dialog');
+  var searchInput = document.getElementById('workspace-search');
+  var searchResults = document.getElementById('search-results');
+
+  function normalizedSearchText(value) {
+    return value.toLocaleLowerCase('pt-BR').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
+
+  function renderSearchResults(query) {
+    searchResults.replaceChildren();
+    var normalizedQuery = normalizedSearchText(query.trim());
+    if (!normalizedQuery) {
+      searchResults.append(element('p', 'search-hint', 'Digite para encontrar tarefas e anotações.'));
+      return;
+    }
+
+    var matches = entries.filter(function (entry) {
+      if (entry.type !== 'task' && entry.type !== 'note') return false;
+      var typeLabel = entry.type === 'task' ? 'tarefa' : 'anotação';
+      var searchable = normalizedSearchText([entry.title, entry.detail, entry.category || '', typeLabel].join(' '));
+      return searchable.includes(normalizedQuery);
+    });
+    if (!matches.length) {
+      searchResults.append(element('p', 'search-hint', 'Nenhuma tarefa ou anotação encontrada.'));
+      return;
+    }
+
+    matches.forEach(function (entry) {
+      var result = element('button', 'search-result');
+      result.type = 'button';
+      result.setAttribute('aria-label', (entry.type === 'task' ? 'Tarefa: ' : 'Anotação: ') + entry.title);
+      var copy = element('span', 'search-result-copy');
+      copy.append(
+        element('strong', '', entry.title),
+        element('small', '', entry.type === 'task' ? 'Tarefa' : 'Anotação')
+      );
+      result.append(copy, element('span', 'search-result-arrow', '→'));
+      result.addEventListener('click', function () {
+        var view = entry.type === 'task' ? 'tasks' : 'notes';
+        if (view === 'tasks') {
+          activeFilter = 'all';
+          document.querySelectorAll('[data-filter]').forEach(function (filter) {
+            var selected = filter.dataset.filter === activeFilter;
+            filter.classList.toggle('active', selected);
+            filter.setAttribute('aria-pressed', String(selected));
+          });
+        }
+        render();
+        searchDialog.close();
+        setView(view);
+        var target = Array.from(document.querySelectorAll('[data-entry-id]')).find(function (node) {
+          return node.dataset.entryId === entry.id && !node.closest('[hidden]');
+        });
+        if (!target) return;
+        target.tabIndex = -1;
+        target.classList.add('search-result-highlight');
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.focus({ preventScroll: true });
+        window.setTimeout(function () {
+          target.classList.remove('search-result-highlight');
+          target.removeAttribute('tabindex');
+        }, 1800);
+      });
+      searchResults.append(result);
+    });
+  }
+
+  document.getElementById('search-button').addEventListener('click', function () {
+    searchInput.value = '';
+    renderSearchResults('');
+    searchDialog.showModal();
+    searchInput.focus();
+  });
+  document.getElementById('search-close').addEventListener('click', function () {
+    searchDialog.close();
+  });
+  searchInput.addEventListener('input', function () {
+    renderSearchResults(searchInput.value);
+  });
 
   function updateDialogFields() {
     var type = typeInput.value;

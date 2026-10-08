@@ -18,6 +18,55 @@
                 <ul>
                     <li><a href="index.html" aria-current="page">Início</a></li>
                     <li><a href="#areas-title">O que oferece</a></li>
+                    <li class="about-menu-item">
+                        <button class="about-trigger" id="sobre" type="button" aria-expanded="false" aria-controls="sidebar-sobre">
+                            Sobre <span aria-hidden="true">⌄</span>
+                        </button>
+                        <div class="sidebar about-menu" id="sidebar-sobre" aria-label="Sobre o Meu Espaço">
+                            <p class="landing-eyebrow">CONHEÇA O MEU ESPAÇO</p>
+                            <div class="about-menu-tabs" role="tablist" aria-label="Informações">
+                                <button class="about-menu-tab active" id="about-company-tab" type="button" role="tab" aria-selected="true" aria-controls="about-company-panel">A empresa</button>
+                                <button class="about-menu-tab" id="about-clients-tab" type="button" role="tab" aria-selected="false" aria-controls="about-clients-panel">Nossos clientes</button>
+                            </div>
+                            <section class="about-menu-panel active" id="about-company-panel" role="tabpanel" aria-labelledby="about-company-tab">
+                                <h2>Organização com mais leveza.</h2>
+                                <p>O Meu Espaço é um projeto pensado para reunir tarefas, anotações, agenda e objetivos em uma experiência simples e acolhedora.</p>
+                                <p>A ideia é ajudar cada pessoa a encontrar clareza no dia a dia, respeitando seu próprio ritmo.</p>
+                            </section>
+                            <section class="about-menu-panel" id="about-clients-panel" role="tabpanel" aria-labelledby="about-clients-tab" hidden>
+                                <h2>Feito para a vida real.</h2>
+                                <p>O Meu Espaço é pensado para estudantes, profissionais e qualquer pessoa que queira organizar melhor compromissos, ideias e planos pessoais.</p>
+                                <p>Seja para acompanhar uma rotina de estudos ou tirar projetos do papel, cada pessoa pode adaptar o espaço às próprias prioridades.</p>
+                            </section>
+                        </div>
+                    </li>
+                    <li class="about-menu-item contact-menu-item">
+                        <button class="about-trigger" id="contato" type="button" aria-expanded="false" aria-controls="sidebar-contato">
+                            Contato <span aria-hidden="true">⌄</span>
+                        </button>
+                        <div class="sidebar about-menu contact-menu" id="sidebar-contato" aria-label="Contato do Meu Espaço">
+                            <p class="landing-eyebrow">FALE COM O MEU ESPAÇO</p>
+                            <section class="about-menu-panel contact-menu-panel active">
+                                <h2>Vamos conversar?</h2>
+                                <p>Escolha como prefere entrar em contato.</p>
+                                <a class="contact-menu-link" href="mailto:voce@gmail.com">
+                                    <span class="contact-menu-icon" aria-hidden="true">✉</span>
+                                    <span><strong>E-mail</strong><br>voce@gmail.com</span>
+                                </a>
+                                <a class="contact-menu-link" href="tel:+553299999999">
+                                    <span class="contact-menu-icon" aria-hidden="true">☎</span>
+                                    <span><strong>Telefone</strong><br>+55329999-9999</span>
+                                </a>
+                            </section>
+                        </div>
+                    </li>
+                    <li class="theme-nav-item">
+                        <button class="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Ativar modo escuro" title="Ativar modo escuro">
+                            <span class="theme-toggle-track" aria-hidden="true">
+                                <span class="theme-toggle-sun">☀</span><span class="theme-toggle-moon">☾</span><span class="theme-toggle-thumb"></span>
+                            </span>
+                        </button>
+                    </li>
                     <li id="login-nav"><a href="login.html">Entrar</a></li>
                     <li id="register-nav"><a href="cadastro.html">Cadastro</a></li>
                     <li id="tasks-nav" hidden><a href="tarefas.html">Minhas tarefas</a></li>

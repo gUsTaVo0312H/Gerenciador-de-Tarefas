@@ -6,6 +6,7 @@
 	<meta name="theme-color" content="#347778">
 	<title>Meu Espaço | Organize seu dia</title>
 	<link rel="stylesheet" href="style.css">
+	<script src="script.js" defer></script>
 </head>
 <body class="workspace-page">
 	<div class="workspace-shell">
@@ -34,7 +35,12 @@
 			<header class="workspace-topbar">
 				<div class="breadcrumb"><a class="breadcrumb-home" href="index.html">Página inicial</a><span>/</span><strong id="current-section">Início</strong></div>
 				<div class="topbar-actions">
-					<button class="icon-button" type="button" aria-label="Buscar" title="Buscar" id="search-button">⌕</button>
+					<button class="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Ativar modo escuro" title="Ativar modo escuro">
+						<span class="theme-toggle-track" aria-hidden="true">
+							<span class="theme-toggle-sun">☀</span><span class="theme-toggle-moon">☾</span><span class="theme-toggle-thumb"></span>
+						</span>
+					</button>
+					<button class="icon-button" type="button" aria-label="Buscar tarefas e anotações" title="Buscar tarefas e anotações" id="search-button">⌕</button>
 					<span class="today-date" id="today-date"></span>
 					<button class="avatar top-avatar" type="button" aria-label="Perfil de Gustavo">G</button>
 				</div>
@@ -105,6 +111,8 @@
 		<button class="mobile-add add-trigger" type="button" aria-label="Adicionar"><span>＋</span></button>
 		<button class="mobile-nav-item" type="button" data-view="notes"><span>▤</span>Notas</button>
 		<button class="mobile-nav-item" type="button" data-view="calendar"><span>▦</span>Agenda</button>
+		<button class="mobile-nav-item" type="button" data-view="progress"><span>↗</span>Progresso</button>
+		<button class="mobile-nav-item" type="button" data-view="goals"><span>◎</span>Objetivos</button>
 	</nav>
 
 	<dialog class="entry-dialog" id="entry-dialog">
@@ -116,6 +124,19 @@
 			<label for="entry-date" id="date-label">Data</label><input id="entry-date" name="date" type="date">
 			<button class="button-primary dialog-submit" type="submit">Guardar no meu espaço <span>→</span></button>
 		</form>
+	</dialog>
+	<dialog class="search-dialog" id="search-dialog" aria-labelledby="search-title">
+		<div class="search-dialog-content">
+			<div class="dialog-heading">
+				<div><p class="eyebrow">ENCONTRE NO SEU ESPAÇO</p><h2 id="search-title">Buscar</h2></div>
+				<button class="dialog-close" type="button" aria-label="Fechar busca" id="search-close">×</button>
+			</div>
+			<label class="search-label" for="workspace-search">Tarefas e anotações</label>
+			<input class="search-input" id="workspace-search" type="search" placeholder="Digite um título ou detalhe..." autocomplete="off">
+			<div class="search-results" id="search-results" aria-live="polite">
+				<p class="search-hint">Digite para encontrar tarefas e anotações.</p>
+			</div>
+		</div>
 	</dialog>
 	<script src="tarefas.js"></script>
 </body>
