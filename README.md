@@ -63,7 +63,7 @@ O projeto é estático e não precisa de instalação ou dependências.
 
 1. Baixe ou clone este repositório.
 2. Abra a pasta no Visual Studio Code ou em outro editor.
-3. Abra `index.html` no navegador — ou inicie o **Live Server**.
+3. Inicie o **Live Server** no `index.html` ou acesse a versão publicada no GitHub Pages. Evite abrir os arquivos diretamente por `file://`: o navegador separa os dados locais entre páginas e o cadastro, o login e o painel precisam compartilhar a mesma origem para funcionar.
 4. Use o cadastro de demonstração para acessar o painel.
 
 ## Tecnologias
