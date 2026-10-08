@@ -104,6 +104,16 @@ document.addEventListener('DOMContentLoaded', function () {
     if (task.date && task.date !== today) {
       row.append(element('span', 'task-date', formatShortDate(task.date)));
     }
+    var remove = element('button', 'task-delete', '×');
+    remove.type = 'button';
+    remove.setAttribute('aria-label', 'Excluir tarefa: ' + task.title);
+    remove.setAttribute('title', 'Excluir tarefa');
+    remove.addEventListener('click', function () {
+      entries = entries.filter(function (entry) { return entry.id !== task.id; });
+      saveEntries();
+      render();
+    });
+    row.append(remove);
     return row;
   }
 

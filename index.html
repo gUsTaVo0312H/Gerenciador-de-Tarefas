@@ -12,12 +12,12 @@
     <header class="landing-header">
         <div class="landing-header-inner">
             <a class="landing-brand" href="index.html" aria-label="Meu Espaço, início">
-                <span class="landing-brand-mark" aria-hidden="true">m.</span>
-                <span>Meu Espaço</span>
+                <img class="landing-brand-logo" src="assets/logo.png" alt="">
             </a>
             <nav aria-label="Navegação principal">
                 <ul>
                     <li><a href="index.html" aria-current="page">Início</a></li>
+                    <li><a href="#areas-title">O que oferece</a></li>
                     <li id="login-nav"><a href="login.html">Entrar</a></li>
                     <li id="register-nav"><a href="cadastro.html">Cadastro</a></li>
                     <li id="tasks-nav" hidden><a href="tarefas.html">Minhas tarefas</a></li>
@@ -30,64 +30,112 @@
     <main class="landing-main">
         <section class="landing-hero" aria-labelledby="landing-title">
             <div class="landing-copy">
-                <p class="landing-eyebrow">UM LUGAR PARA VOCÊ</p>
+                <p class="landing-eyebrow">MENOS COISAS NA CABEÇA, MAIS CLAREZA NO DIA</p>
                 <h1 id="landing-title">Meu Espaço<span>.</span></h1>
-                <p class="landing-intro">Tarefas, ideias e planos em um só lugar, para organizar a vida no seu ritmo.</p>
+                <p class="landing-intro">Um lugar simples para organizar tarefas, guardar ideias, lembrar compromissos e acompanhar os planos que importam para você.</p>
                 <div class="landing-actions" id="guest-message">
-                    <a class="landing-button" href="cadastro.html">Criar meu espaço <span aria-hidden="true">→</span></a>
+                    <a class="landing-button" href="cadastro.html">Quero me organizar <span aria-hidden="true">→</span></a>
                     <a class="landing-login-link" href="login.html">Já tenho cadastro</a>
                 </div>
                 <p class="landing-member-message" id="member-message" hidden></p>
+                <div class="landing-promise"><span aria-hidden="true">✳</span> Comece pelo que está no seu alcance. O resto vem aos poucos.</div>
             </div>
 
             <section class="landing-preview" aria-label="Prévia das áreas do Meu Espaço">
                 <div class="preview-heading">
-                    <span class="preview-mark" aria-hidden="true">m.</span>
-                    <span>Um espaço, muitas ideias</span>
+                    <img class="preview-logo" src="assets/logo.png" alt="">
+                    <span>Seu dia, em perspectiva</span>
                 </div>
                 <div class="preview-content">
                     <p class="landing-eyebrow">DO SEU JEITO</p>
-                    <h2>O que importa para você, reunido aqui.</h2>
+                    <h2>Um pouco mais de espaço para pensar.</h2>
                     <ul class="preview-areas">
-                        <li><span class="preview-number">01</span><span>Tarefas</span><span class="preview-line" aria-hidden="true"></span></li>
-                        <li><span class="preview-number">02</span><span>Anotações</span><span class="preview-line" aria-hidden="true"></span></li>
-                        <li><span class="preview-number">03</span><span>Agenda</span><span class="preview-line" aria-hidden="true"></span></li>
-                        <li><span class="preview-number">04</span><span>Progresso e objetivos</span><span class="preview-line" aria-hidden="true"></span></li>
+                        <li><span class="preview-number">01</span><span>Priorize suas tarefas</span><span class="preview-line" aria-hidden="true"></span></li>
+                        <li><span class="preview-number">02</span><span>Guarde suas ideias</span><span class="preview-line" aria-hidden="true"></span></li>
+                        <li><span class="preview-number">03</span><span>Visualize seus compromissos</span><span class="preview-line" aria-hidden="true"></span></li>
+                        <li><span class="preview-number">04</span><span>Reconheça seu progresso</span><span class="preview-line" aria-hidden="true"></span></li>
                     </ul>
-                    <p class="preview-note">Pequenos passos também contam.</p>
+                    <p class="preview-note"><span aria-hidden="true">✓</span> Pequenos passos também contam.</p>
                 </div>
             </section>
         </section>
 
         <section class="landing-areas" aria-labelledby="areas-title">
             <div class="areas-heading">
-                <p class="landing-eyebrow">SEU DIA, COM MAIS CLAREZA</p>
-                <h2 id="areas-title">Um cantinho para cada coisa.</h2>
+                <p class="landing-eyebrow">TUDO NO SEU LUGAR, SEM COMPLICAÇÃO</p>
+                <h2 id="areas-title">O que você precisa, em um só espaço.</h2>
             </div>
             <div class="area-list">
                 <article class="area-item">
-                    <span class="area-index">01</span>
-                    <div><h3>Tarefas</h3><p>Veja o que precisa ser feito, um passo de cada vez.</p></div>
+                    <span class="area-index">01</span><span class="area-icon" aria-hidden="true">✓</span>
+                    <div><h3>Tarefas que ficam mais leves</h3><p>Adicione o que precisa fazer, acompanhe pendências e marque cada conquista quando concluir.</p></div>
                 </article>
                 <article class="area-item">
-                    <span class="area-index">02</span>
-                    <div><h3>Anotações</h3><p>Guarde ideias, listas e lembretes em um só lugar.</p></div>
+                    <span class="area-index">02</span><span class="area-icon area-icon-coral" aria-hidden="true">✎</span>
+                    <div><h3>Ideias sempre à mão</h3><p>Guarde anotações, listas e lembretes sem depender de papéis soltos ou da memória.</p></div>
                 </article>
                 <article class="area-item">
-                    <span class="area-index">03</span>
-                    <div><h3>Agenda</h3><p>Tenha um olhar simples para seus próximos compromissos.</p></div>
+                    <span class="area-index">03</span><span class="area-icon area-icon-teal" aria-hidden="true">▦</span>
+                    <div><h3>Compromissos no horizonte</h3><p>Consulte seus eventos em um calendário mensal e tenha uma noção melhor do que vem pela frente.</p></div>
                 </article>
                 <article class="area-item">
-                    <span class="area-index">04</span>
-                    <div><h3>Progresso e objetivos</h3><p>Acompanhe o que já caminhou e o que quer alcançar.</p></div>
+                    <span class="area-index">04</span><span class="area-icon area-icon-coral" aria-hidden="true">↗</span>
+                    <div><h3>Planos que ganham forma</h3><p>Defina objetivos, acompanhe seu progresso e veja o caminho que já percorreu.</p></div>
                 </article>
             </div>
+        </section>
+
+        <section class="landing-benefits" aria-labelledby="benefits-title">
+            <div class="benefits-heading">
+                <p class="landing-eyebrow">ORGANIZAÇÃO QUE CABE NA VIDA REAL</p>
+                <h2 id="benefits-title">Menos atrito para começar.<br><span>Mais clareza para continuar.</span></h2>
+                <p>Não precisa planejar cada minuto. Basta reunir o que está espalhado e escolher um próximo passo.</p>
+            </div>
+            <div class="benefit-list">
+                <article class="benefit-card">
+                    <span class="benefit-number">01 / VISÃO</span>
+                    <h3>Enxergue o que está acontecendo</h3>
+                    <p>Um painel inicial reúne suas tarefas e anotações recentes para você saber por onde começar.</p>
+                </article>
+                <article class="benefit-card">
+                    <span class="benefit-number benefit-coral">02 / RITMO</span>
+                    <h3>Organize sem se cobrar perfeição</h3>
+                    <p>Separe tarefas, ideias e compromissos em áreas próprias e avance no tempo que fizer sentido.</p>
+                </article>
+                <article class="benefit-card">
+                    <span class="benefit-number benefit-teal">03 / PROGRESSO</span>
+                    <h3>Valorize cada etapa concluída</h3>
+                    <p>Acompanhe suas atividades e objetivos para perceber que todo passo conta.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="landing-steps" aria-labelledby="steps-title">
+            <div class="steps-heading">
+                <p class="landing-eyebrow">SIMPLES DESDE O PRIMEIRO PASSO</p>
+                <h2 id="steps-title">Comece do seu jeito.</h2>
+            </div>
+            <ol class="steps-list">
+                <li><span>1</span><div><h3>Crie seu espaço</h3><p>Faça seu cadastro para abrir o painel.</p></div></li>
+                <li><span>2</span><div><h3>Coloque as ideias no lugar</h3><p>Adicione tarefas, notas, eventos e objetivos.</p></div></li>
+                <li><span>3</span><div><h3>Siga um passo de cada vez</h3><p>Atualize o que concluiu e veja seu progresso.</p></div></li>
+            </ol>
+        </section>
+
+        <section class="landing-cta" aria-labelledby="cta-title">
+            <div>
+                <p class="landing-eyebrow">SEU PRÓXIMO PASSO PODE SER MAIS LEVE</p>
+                <h2 id="cta-title">Abra espaço para o que importa.</h2>
+                <p>Comece hoje e descubra um jeito mais claro de cuidar das suas tarefas e dos seus planos.</p>
+            </div>
+            <a class="landing-button cta-button" href="cadastro.html">Criar meu espaço <span aria-hidden="true">→</span></a>
         </section>
     </main>
 
     <footer class="landing-footer">
-        <a class="landing-footer-brand" href="index.html">Meu Espaço</a>
+        <a class="landing-footer-brand" href="index.html" aria-label="Meu Espaço, início"><img class="footer-brand-logo" src="assets/logo.png" alt=""></a>
         <span>Feito para a vida real, no seu ritmo.</span>
+        <a class="footer-top-link" href="#landing-title">Voltar ao início ↑</a>
     </footer>
 </body>
 </html>
