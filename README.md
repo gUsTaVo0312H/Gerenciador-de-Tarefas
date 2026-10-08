@@ -90,6 +90,10 @@ O projeto é estático e não precisa de instalação ou dependências.
 >
 > O cadastro é demonstrativo e armazena credenciais localmente; **a senha fica em texto puro**. Use somente dados fictícios. Uma implantação real precisa de autenticação e armazenamento seguros no servidor.
 
+## Autor e contato
+
+**Gustavo Santos** · [Instagram: @ghsantos_i](https://www.instagram.com/ghsantos_i/)
+
 <br>
 
 <div align="center">
